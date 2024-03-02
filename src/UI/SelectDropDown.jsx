@@ -1,7 +1,6 @@
 import React from "react";
 
 const SelectDropDown = (props) => {
-  console.log("lallal ", props.selectedCatagory);
   return (
     <form className="max-w-sm mx-auto bg-white ">
       <label htmlFor="underline_select" className="sr-only">

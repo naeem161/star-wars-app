@@ -17,8 +17,6 @@ const FilmComponent = (props) => {
     getData();
   }, [props.searchValue]);
 
-  console.log("array ", filmsData.results);
-
   if (filmsData?.results?.length === 0) {
     return (
       <div className="flex justify-center mt-14 text-xl font-bold">

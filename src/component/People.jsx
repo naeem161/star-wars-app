@@ -65,7 +65,7 @@ function Planets() {
             key={planet.name}
             className={`max-w-xs rounded overflow-hidden shadow-lg ${
               backgroundColors[planet.species.length]
-            } text-gray-700 max-w-md mx-auto bg-white rounded-md overflow-hidden transform transition-transform duration-300 ease-in-out hov shadow-cyan-900 hover:scale-105 hover:shadow-md hover:shadow-amber-500 shadow-md`}
+            } text-gray-700 w-75 h-80  max-w-md mx-auto bg-white rounded-md overflow-hidden transform transition-transform duration-300 ease-in-out hov shadow-cyan-900 hover:scale-105 hover:shadow-md hover:shadow-amber-500 shadow-md`}
             onClick={() => openModal(planet)}
           >
             {peopleImages.length !== 0 && (
