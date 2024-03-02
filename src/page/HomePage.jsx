@@ -8,7 +8,7 @@ import SelectDropDown from "../UI/SelectDropDown";
 import SpeciesComponent from "../component/SpeciesComponent";
 
 const HomePage = () => {
-  const [searchTerm, setSearchTerm] = useState();
+  const [searchTerm, setSearchTerm] = useState("");
   const { isAuthenticated, isLoading } = useAuth0();
   const [selectCatagory, setSelectCatagory] = React.useState("");
 
@@ -26,6 +26,7 @@ const HomePage = () => {
           <div className="mb-2">
             <SearchInput
               onInputChange={(e) => {
+                e.preventDefault();
                 setSearchTerm(e.target.value);
               }}
               searchTerm={searchTerm}
@@ -40,9 +41,11 @@ const HomePage = () => {
         </div>
         {/* -------------------- End of Seacrhbar & Dropdown ------------------ */}
 
-        {!selectCatagory && <People />}
+        {selectCatagory === "" && searchTerm === "" ? <People /> : ""}
         {selectCatagory === "films" && <FilmComponent />}
-        {selectCatagory === "species" && <SpeciesComponent />}
+        {selectCatagory === "species" && (
+          <SpeciesComponent searchValue={searchTerm} />
+        )}
       </>
     )
   );
