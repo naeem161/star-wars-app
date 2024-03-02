@@ -42,7 +42,9 @@ const HomePage = () => {
         {/* -------------------- End of Seacrhbar & Dropdown ------------------ */}
 
         {selectCatagory === "" && searchTerm === "" ? <People /> : ""}
-        {selectCatagory === "films" && <FilmComponent />}
+        {selectCatagory === "films" && (
+          <FilmComponent searchValue={searchTerm} />
+        )}
         {selectCatagory === "species" && (
           <SpeciesComponent searchValue={searchTerm} />
         )}
