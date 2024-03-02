@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../UI/Spinner";
+import Modal from "../UI/Modal";
 
 const backgroundColors = {
   0: "bg-gray-300",
@@ -19,6 +20,18 @@ function Planets() {
     `https://swapi.dev/api/people/?page=1`
   );
   const [peopleImages, setPeopleImages] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPerson, setSelectedPerson] = useState(false);
+
+  const openModal = (person) => {
+    setSelectedPerson(person);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedPerson(null);
+    setIsModalOpen(false);
+  };
 
   const getRandomImage = async () => {
     const imageUrl = `https://picsum.photos/v2/list?page=2&limit=10`;
@@ -53,6 +66,7 @@ function Planets() {
             className={`max-w-xs rounded overflow-hidden shadow-lg ${
               backgroundColors[planet.species.length]
             } text-gray-700`}
+            onClick={() => openModal(planet)}
           >
             {peopleImages.length !== 0 && (
               <img
@@ -62,11 +76,9 @@ function Planets() {
                 height={150}
               />
             )}
-            <div class="font-bold text-2xl mb-2 mt-6 text-center">
+            <div className="font-bold text-2xl mb-2 mt-6 text-center">
               {planet.name}
             </div>
-
-            <br />
           </div>
         );
       })}
@@ -112,6 +124,16 @@ function Planets() {
 
       {/* showing cards  */}
       <main>{allPlanetsOnPage}</main>
+      {/* Showing selected Modal  */}
+
+      {isModalOpen && selectedPerson && (
+        <Modal
+          data={selectedPerson}
+          showModal={isModalOpen}
+          onCloseModal={closeModal}
+        />
+      )}
+      <Modal />
     </div>
   );
 }

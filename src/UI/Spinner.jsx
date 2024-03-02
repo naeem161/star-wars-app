@@ -1,6 +1,6 @@
 import React from "react";
 
-const Spinner = () => {
+const Spinner = (props) => {
   return (
     <div role="status" className="flex justify-center mt-56">
       <svg
