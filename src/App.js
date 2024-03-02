@@ -1,7 +1,7 @@
 import "./App.css";
 
 function App() {
-  return <div className="App">App Component</div>;
+  return <h1 className="text-3xl font-bold underline">App Component</h1>;
 }
 
 export default App;
