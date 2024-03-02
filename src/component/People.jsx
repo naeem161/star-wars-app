@@ -2,6 +2,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../UI/Spinner";
 
+const backgroundColors = {
+  0: "bg-gray-300",
+  1: "bg-green-200",
+  2: "bg-green-200",
+  3: "bg-green-200",
+  4: "bg-blue-200",
+  5: "bg-blue-200",
+  6: "bg-blue-200",
+};
+
 function Planets() {
   const [isLoading, setLoading] = useState(true);
   const [starWarsDataPeople, setStarWarsDataPeople] = useState();
@@ -40,7 +50,9 @@ function Planets() {
         return (
           <div
             key={planet.name}
-            className="max-w-xs rounded overflow-hidden shadow-lg bg-gray-200 text-gray-700"
+            className={`max-w-xs rounded overflow-hidden shadow-lg ${
+              backgroundColors[planet.species.length]
+            } text-gray-700`}
           >
             {peopleImages.length !== 0 && (
               <img
@@ -50,11 +62,10 @@ function Planets() {
                 height={150}
               />
             )}
-            <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
-            <h2 key={planet.name}>{planet.name}</h2>
-            <p>Climate: {planet.climate}</p>
-            <p>Terrain: {planet.terrain}</p>
-            <p>Population: {planet.population}</p>
+            <div class="font-bold text-2xl mb-2 mt-6 text-center">
+              {planet.name}
+            </div>
+
             <br />
           </div>
         );
