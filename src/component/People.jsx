@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Spinner from "../UI/Spinner";
 
 function Planets() {
   const [isLoading, setLoading] = useState(true);
@@ -24,35 +25,21 @@ function Planets() {
   useEffect(() => {
     axios.get(urlPeople).then(async (response) => {
       setStarWarsDataPeople(response.data);
-      setLoading(false);
 
       // Fetch unique random images for each planet
       const imagesPromises = getRandomImage();
       const images = await imagesPromises;
       setPeopleImages(images);
+      setLoading(false);
     });
   }, [urlPeople]);
 
-  if (isLoading) {
-    return (
-      <div>
-        <div>
-          <h1 className="txt-shadow-gold">Planets</h1>
-          <button disabled={true}>⏪ Previous Page</button>
-          <button disabled={true}>Next Page⏩</button>
-        </div>
-        <div className="overlay">Loading...</div>
-      </div>
-    );
-  }
-
   const allPlanetsOnPage = (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-items-center">
-      {starWarsDataPeople.results.map((planet, index) => {
+      {starWarsDataPeople?.results.map((planet, index) => {
         return (
           <div
             key={planet.name}
-            style={{ border: "2px solid yellow" }}
             className="max-w-xs rounded overflow-hidden shadow-lg bg-gray-200 text-gray-700"
           >
             {peopleImages.length !== 0 && (
@@ -84,8 +71,12 @@ function Planets() {
     setUrlPeople(starWarsDataPeople.previous);
   }
 
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
-    <div className="m-4 from-neutral-300  " style={{ border: "2px solid red" }}>
+    <div className="m-4 from-neutral-300  ">
       <section className="flex justify-end space-x-2.5 ">
         <button
           className={`flex items-center py-2 px-3 rounded font-medium select-none border text-gray-900 ${
