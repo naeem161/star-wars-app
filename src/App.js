@@ -4,14 +4,10 @@ import LoginPage from "./page/LoginPage";
 import HomePage from "./page/HomePage";
 
 function App() {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
 
   if (isLoading) {
     return <div>Loading ...</div>;
-  }
-
-  if (isAuthenticated) {
-    console.log({ user });
   }
 
   if (isAuthenticated) {

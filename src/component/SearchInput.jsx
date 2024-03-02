@@ -13,10 +13,6 @@ const SearchInput = (props) => {
         placeholder="Search Here"
         required
       />
-      <button
-        type="button"
-        className="absolute inset-y-0 end-0 flex items-center pe-3"
-      ></button>
 
       <button
         type="submit"
@@ -31,9 +27,9 @@ const SearchInput = (props) => {
         >
           <path
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
           />
         </svg>
