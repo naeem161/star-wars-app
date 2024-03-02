@@ -2,7 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
+body {
+  background-color: #303030; /* Dark background color */
+  color: #f0f0f0; /* Light text color for readability on dark background */
+}
 
 /* * {
   margin: 0;
