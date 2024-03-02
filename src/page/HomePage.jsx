@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import LogoutButton from "../auth/LogoutButton";
+import Navbar from "../component/Navbar";
 
 const HomePage = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -14,8 +14,8 @@ const HomePage = () => {
   return (
     isAuthenticated && (
       <>
-        {/* auth Logout button  */}
-        <LogoutButton />
+        <Navbar />
+
         <div>
           {/* user first name  */}
           <h2> Welcome {user.given_name}</h2>

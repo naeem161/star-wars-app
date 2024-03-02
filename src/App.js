@@ -1,6 +1,6 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import "./App.css";
 import LoginPage from "./page/LoginPage";
-import { useAuth0 } from "@auth0/auth0-react";
 import HomePage from "./page/HomePage";
 
 function App() {
@@ -27,8 +27,6 @@ function App() {
       <LoginPage />
     </>
   );
-
-  return <LoginPage />;
 }
 
 export default App;
